@@ -109,10 +109,20 @@ public class GamePanel extends JPanel implements Runnable{
 	public void update() {
 		
 		m_player.update();
+		if(m_listEntity != null) {
+			for(Entity e: m_listEntity) {
+				e.update();
+			}
+		}
+		
 	}
 	
 	public TileManager getM_tileM() {
 		return m_tileM;
+	}
+	
+	public Player getM_Player() {
+		return m_player;
 	}
 
 

@@ -14,6 +14,12 @@ public class Key extends Objet {
 		super(x,y,ImagePath.getInstance().KEY,a_gp);
 		
 	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

@@ -20,8 +20,6 @@ public class Room {
 	void updateGamePanel() {
 		m_gp.m_tileM.loadMap(m_map);
 		m_gp.setM_listEntity(m_listEntity);
-		
-		
 	}
 
 }

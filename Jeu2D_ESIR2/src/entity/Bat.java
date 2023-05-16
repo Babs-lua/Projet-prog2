@@ -27,17 +27,17 @@ public class Bat extends Monster{
      */
     public void update(Player p) {
 
-        move(p);
+        move();
 
     }
     
     @Override
-    public void move(Player p) {
-        int p_x = p.m_x;
-        int p_y = p.m_y;
+    public void move() {
+        int p_x = m_gp.getM_Player().m_x;
+        int p_y = m_gp.getM_Player().m_y;
         
-        int deplacement_x = p.m_x - m_x;
-        int deplacement_y = p.m_y - m_y;
+        int deplacement_x = m_gp.getM_Player().m_x - m_x;
+        int deplacement_y = m_gp.getM_Player().m_y - m_y;
         
         double distance = Math.sqrt(deplacement_x * deplacement_x + deplacement_y * deplacement_y);
         double deplacementNormaliseX = (deplacement_x / distance) * m_speed;
@@ -63,5 +63,12 @@ public class Bat extends Monster{
     public void setM_attack(int m_attack) {
         this.m_attack = m_attack;
     }
+
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

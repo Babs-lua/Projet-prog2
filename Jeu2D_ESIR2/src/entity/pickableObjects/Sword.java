@@ -12,6 +12,12 @@ public class Sword extends Objet {
 	public Sword(int x, int y, GamePanel gp) {
 		super(x,y,ImagePath.getInstance().SWORD, gp);
 	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

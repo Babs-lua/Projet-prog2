@@ -22,11 +22,21 @@ public class Butler extends Monster{
      * Mise à jour des données du joueur
      */
     public void update(Player p) {
-        move(p);
+        move();
     }
     
-    public void move(Player p) {
-        
-    }
+ 
+
+	@Override
+	public void move() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

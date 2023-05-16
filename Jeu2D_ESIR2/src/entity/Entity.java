@@ -22,6 +22,9 @@ public abstract class Entity {
         this.m_idleImage = a_idleImage;
         this.m_gp=a_gp;
     }
+    
+    public abstract void update();
+    
     /**
 	 * Affichage du l'image du joueur dans la fenêtre du jeu
 	 * 
