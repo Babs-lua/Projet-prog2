@@ -124,9 +124,12 @@ public class GamePanel extends JPanel implements Runnable{
 		Graphics2D g2 = (Graphics2D) g;
 		m_tileM.draw(g2);
 		m_player.draw(g2);
-		for(Entity e: m_listEntity) {
-			e.draw(g2);
+		if(m_listEntity != null) {
+			for(Entity e: m_listEntity) {
+				e.draw(g2);
+			}
 		}
+		
 		g2.dispose();
 	}
 	
