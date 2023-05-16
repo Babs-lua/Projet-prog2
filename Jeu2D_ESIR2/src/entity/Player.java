@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import controls.Controls;
-import controls.FixedValues;
 import main.GamePanel;
 import main.KeyHandler;
+import resources.FixedValues;
 import resources.ImagePath;
 
 /**
@@ -86,34 +86,6 @@ public class Player extends Entity {
 		}
 	}
 
-	public int[][] getTileCoord(int x, int y) {
-		int[][] tmp = new int[2][4];
-		// haut gauche
-		tmp[0][0] = (x+10) / m_gp.TILE_SIZE;
-		tmp[1][0] = (y+10) / m_gp.TILE_SIZE;
-		// haut droite
-		tmp[0][1] = (x-10 + m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
-		tmp[1][1] = (y+10) / m_gp.TILE_SIZE;
-		// bas gauche
-		tmp[0][2] = (x+10) / m_gp.TILE_SIZE;
-		tmp[1][2] = (y -10+ m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
-		// bas droite
-		tmp[0][3] = (x -10 + m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
-		tmp[1][3] = (y -10 + m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
-		return tmp;
-	}
 
-	public boolean isCollision(int x, int y) {
-		int[][] cord_tuil = getTileCoord(x, y);
-		for(int i=0;i<4;i++) {
-			int tileId = m_gp.getM_tileM().getM_mapTileNum()[cord_tuil[0][i]][cord_tuil[1][i]];
-			if(m_gp.getM_tileM().getM_tile()[tileId].m_collision) {
-				return true;
-			}
-		}
-		return false;
-		
-		
-	}
 
 }

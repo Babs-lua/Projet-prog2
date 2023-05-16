@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import main.GamePanel;
+import resources.FixedValues;
 
 /**
  * Entité de base du jeu
@@ -36,6 +37,50 @@ public abstract class Entity {
 		// affiche le personnage avec l'image "image", avec les coordonnées x et y, et
 		// de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
 		a_g2.drawImage(l_image, m_x, m_y, m_gp.TILE_SIZE, m_gp.TILE_SIZE, null);
+	}
+	
+	
+	
+	public int[][] getHitbox(int x, int y) {
+		int[][] tmp = new int[FixedValues.box_width][FixedValues.box_length];
+		// haut gauche
+		tmp[0][0] = (x+FixedValues.OVERLAP) / m_gp.TILE_SIZE;
+		tmp[1][0] = (y+FixedValues.OVERLAP) / m_gp.TILE_SIZE;
+		// haut droite
+		tmp[0][1] = (x-FixedValues.OVERLAP + m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
+		tmp[1][1] = (y+FixedValues.OVERLAP) / m_gp.TILE_SIZE;
+		// bas gauche
+		tmp[0][2] = (x+FixedValues.OVERLAP) / m_gp.TILE_SIZE;
+		tmp[1][2] = (y -FixedValues.OVERLAP+ m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
+		// bas droite
+		tmp[0][3] = (x -FixedValues.OVERLAP + m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
+		tmp[1][3] = (y -FixedValues.OVERLAP + m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
+		return tmp;
+	}
+
+	public boolean isCollision(int x, int y) {
+		int[][] cord_tuil = getHitbox(x, y);
+		for(int i=0;i<FixedValues.box_width;i++) {
+			int tileId = m_gp.getM_tileM().getM_mapTileNum()[cord_tuil[0][i]][cord_tuil[1][i]];
+			if(m_gp.getM_tileM().getM_tile()[tileId].m_collision) {
+				return true;
+			}
+		}
+		return false;
+				
+	}
+	
+	public boolean isCollisonWithEnt(Entity e) {
+		int[][] cord_tuil = getHitbox(e.m_x, e.m_y);
+		for(int i=0;i<FixedValues.box_width;i++) {
+			int tileId = m_gp.getM_tileM().getM_mapTileNum()[cord_tuil[0][i]][cord_tuil[1][i]];
+			if(m_gp.getM_tileM().getM_tile()[tileId].m_collision) {
+				return true;
+			}
+		}
+		return false;
+				
+	}
 	}
     
 }
