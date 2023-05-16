@@ -20,7 +20,7 @@ import resources.ImagePath;
 public class TileManager {
 	GamePanel m_gp;			//panel du jeu principal
 	Tile[] m_tile;			//tableau de toutes les tiles possibles dans le jeu
-	int m_maxTiles = 10;	//nombre maximum de tiles chargeable dans le jeu
+	int m_maxTiles = 20;	//nombre maximum de tiles chargeable dans le jeu
 	int m_mapTileNum[][];	//répartition des tiles dans la carte du jeu
 	
 	public int[][] getM_mapTileNum() {
@@ -49,7 +49,6 @@ public class TileManager {
 	 * Chargement de toutes les tuiles du jeu
 	 */
 	public void getTileImage() {
-		try {
 			m_tile[0] = new Tile();
 			m_tile[0].m_image = ImagePath.getInstance().GRASS;
 			
@@ -58,20 +57,16 @@ public class TileManager {
 			m_tile[1].m_collision=true;
 			
 			m_tile[2] = new Tile();
-			m_tile[2].m_image = ImageIO.read(getClass().getResource("/tiles/WATER.png"));
-			
+			m_tile[2].m_image = ImagePath.getInstance().WOODENFLOOR;
+
 			m_tile[3] = new Tile();
-			m_tile[3].m_image = ImageIO.read(getClass().getResource("/tiles/LAVA.png"));
+			m_tile[3].m_image = ImagePath.getInstance().MAINDOOR;
+			m_tile[3].m_collision=true;
 			
 			m_tile[4] = new Tile();
-			m_tile[4].m_image = ImageIO.read(getClass().getResource("/tiles/SAND.png"));
+			m_tile[4].m_image = ImagePath.getInstance().BARRIER;
+			m_tile[4].m_collision=true;
 			
-			m_tile[5] = new Tile();
-			m_tile[5].m_image = ImageIO.read(getClass().getResource("/tiles/SNOW.png"));
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	/**

@@ -30,7 +30,7 @@ public class ImagePath {
 	private ImagePath() {
 		try {
 			BARRIER = ImageIO.read(getClass().getResource("/tiles/BARRIER.png"));
-			BAT = ImageIO.read(getClass().getResource("/tiles/TheBat.png"));
+			BAT = ImageIO.read(getClass().getResource("/tiles/BAT.png"));
 			BATH = ImageIO.read(getClass().getResource("/tiles/BATH.png"));
 			BED = ImageIO.read(getClass().getResource("/tiles/BED.png"));
 			BUTLER = ImageIO.read(getClass().getResource("/tiles/SKELETON.png"));
