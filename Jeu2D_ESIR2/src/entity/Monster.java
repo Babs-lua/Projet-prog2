@@ -23,7 +23,10 @@ public abstract class Monster extends Entity {
 	}
 
 	public abstract void move();
-
+	
+	public abstract void dealDamage();
+	
+	public abstract Objet dropObjet();
 	
 	public List<Objet> getObject() {
 		return object;

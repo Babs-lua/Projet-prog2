@@ -37,6 +37,16 @@ public class Bat extends Monster {
 		m_y += deplacementNormaliseY;
 	}
 
+	@Override
+	public void dealDamage() {
+		
+	}
+	
+	@Override
+	public Objet dropObjet() {
+		return null;
+	}
+	
 	public int getM_health() {
 		return m_health;
 	}
