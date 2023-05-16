@@ -17,7 +17,7 @@ public class Room {
 		m_listEntity = (ArrayList<Entity>) listEntity;
 	}
 	
-	void updateGamePanel() {
+	public void updateGamePanel() {
 		m_gp.m_tileM.loadMap(m_map);
 		m_gp.setM_listEntity(m_listEntity);
 	}

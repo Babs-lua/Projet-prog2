@@ -26,7 +26,7 @@ public class Main {
 		//Ajout du panel du jeu et démarrage du thread principal
 		GamePanel gamePanel = new GamePanel();
 		ArrayList<Entity> tmp = new ArrayList<>();
-		tmp.add(new Door(720, 288, ImagePath.getInstance().MAINDOOR, gamePanel, new Room(gamePanel, "/maps/map.txt", tmp), new Room(gamePanel, "/maps/map2.txt",tmp)));
+		tmp.add(new Door(720, 288, ImagePath.getInstance().MAINDOOR, gamePanel, new Room(gamePanel, "/maps/map.txt",tmp)));
 		gamePanel.setM_listEntity(tmp);
 		window.add(gamePanel);
 		window.pack();

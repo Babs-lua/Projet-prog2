@@ -46,7 +46,12 @@ public class Player extends Entity {
 		
 		HashSet<Integer> tabKey = (HashSet<Integer>) m_keyH.getKey();
 		if(tabKey.size()>0 && tabKey.contains(32)) {
-			m_gp.getM_tileM().loadMap("/maps/map.txt");
+			for(Entity e : m_gp.getM_listEntity()) {
+				System.out.println(e instanceof Door);
+				if(e instanceof Door) {
+					((Door) e).interact();
+				}
+			};
 		}
 		move();
 

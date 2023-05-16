@@ -58,6 +58,10 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setFocusable(true);
 	}
 	
+	public ArrayList<Entity> getM_listEntity() {
+		return m_listEntity;
+	}
+
 	public void setM_listEntity(ArrayList<Entity> m_listEntity) {
 		this.m_listEntity = m_listEntity;
 	}
