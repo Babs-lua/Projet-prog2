@@ -72,7 +72,7 @@ public class Player extends Entity {
 
 				boolean findCollision = false;
 				for (Entity e : m_gp.getM_listEntity()) {
-					if (isCollisionWithEnt(e)) {
+					if (e instanceof Objet && ((Objet)e).solid && isCollisionWithEnt(e)) {
 						findCollision = true;
 						break;
 					}
