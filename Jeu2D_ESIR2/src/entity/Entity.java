@@ -1,6 +1,7 @@
 package entity;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import main.GamePanel;
@@ -11,17 +12,23 @@ import resources.FixedValues;
  *
  */
 public abstract class Entity {
-	public int m_x, m_y; // position sur la map
-	public int m_speed; // Déplacement de l'entité
-	public GamePanel m_gp;
-	public BufferedImage m_idleImage; // Une image de l'entité
+	protected int m_x, m_y; // position sur la map
+	protected int m_speed; // Déplacement de l'entité
+	protected GamePanel m_gp;
+	protected BufferedImage m_idleImage; // Une image de l'entité
+	protected Rectangle m_hitbox;
 
 	Entity(int a_x, int a_y, int a_speed, BufferedImage a_idleImage, GamePanel a_gp) {
 		this.m_x = a_x;
 		this.m_y = a_y;
+		m_hitbox = new Rectangle(a_x, a_y, FixedValues.TILE, FixedValues.TILE);
 		this.m_speed = a_speed;
 		this.m_idleImage = a_idleImage;
 		this.m_gp = a_gp;
+	}
+	
+	public void moveHitBox(int x,int y) {
+		m_hitbox.setLocation(x, y);
 	}
 
 	public abstract void update();
@@ -68,21 +75,55 @@ public abstract class Entity {
 
 	}
 
-	public boolean isCollisonWithEnt(Entity e) {
-		int[][] entiteBox = getHitbox(e.m_x, e.m_y);
-		int[][] m_htibox = getHitbox(m_x, m_y);
-		for (int i = 0; i < FixedValues.box_length; i++) {
-			if (insideTheBox(m_htibox, entiteBox[0][i], entiteBox[1][i])) {
-				System.out.println("touchepull");
-				return true;
-			}
-		}
-		return false;
-
+	boolean isCollisionWithEnt(Entity e) {
+		return m_hitbox.intersects(e.getM_hitbox());
 	}
 
-	private boolean insideTheBox(int[][] box, int x, int y) {
-		return x > box[0][0] && x < box[0][1] && y > box[1][0] && y < box[1][1];
+	public int getM_x() {
+		return m_x;
 	}
 
+	public void setM_x(int m_x) {
+		this.m_x = m_x;
+	}
+
+	public int getM_y() {
+		return m_y;
+	}
+
+	public void setM_y(int m_y) {
+		this.m_y = m_y;
+	}
+
+	public int getM_speed() {
+		return m_speed;
+	}
+
+	public void setM_speed(int m_speed) {
+		this.m_speed = m_speed;
+	}
+
+	public GamePanel getM_gp() {
+		return m_gp;
+	}
+
+	public void setM_gp(GamePanel m_gp) {
+		this.m_gp = m_gp;
+	}
+
+	public BufferedImage getM_idleImage() {
+		return m_idleImage;
+	}
+
+	public void setM_idleImage(BufferedImage m_idleImage) {
+		this.m_idleImage = m_idleImage;
+	}
+
+	public Rectangle getM_hitbox() {
+		return m_hitbox;
+	}
+
+	public void setM_hitbox(Rectangle m_hitbox) {
+		this.m_hitbox = m_hitbox;
+	}
 }

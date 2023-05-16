@@ -52,16 +52,15 @@ public class Player extends Entity {
 					((Door) e).interact();
 				}
 			}
-			;
 		}
 		move();
 		for (Entity e : m_gp.getM_listEntity()) {
-			System.out.println((e.m_x +""+ m_x));
-			if (isCollision(e.m_x, e.m_y))
+			System.out.println(e.getM_hitbox());
+			if (isCollisionWithEnt(e)) {
 				System.out.println("tg");
-			;
-		}
+			}
 
+		}
 	}
 
 	public void move() {
@@ -90,10 +89,11 @@ public class Player extends Entity {
 				if (!isCollision(new_x, new_y)) {
 					m_x = new_x;
 					m_y = new_y;
+					
 				}
 
 			}
-		}
-	}
 
+		}moveHitBox(m_x, m_y);
+	}
 }
