@@ -55,9 +55,7 @@ public class Player extends Entity {
 		}
 		move();
 		for (Entity e : m_gp.getM_listEntity()) {
-			System.out.println(e.getM_hitbox());
 			if (isCollisionWithEnt(e)) {
-				System.out.println("tg");
 			}
 
 		}

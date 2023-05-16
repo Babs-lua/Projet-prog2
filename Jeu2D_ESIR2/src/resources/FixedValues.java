@@ -7,5 +7,5 @@ public class FixedValues {
 	public static final int OVERLAP = 10;
 	public static final int box_length = 4;
 	public static final int box_width = 2;
-	public static final int TILE = 16;
+	public static final int TILE = 48;
 }
