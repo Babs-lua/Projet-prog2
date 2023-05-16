@@ -47,14 +47,15 @@ public class Player extends Entity {
 	public void update() {
 
 		HashSet<Integer> tabKey = (HashSet<Integer>) m_keyH.getKey();
-		if (tabKey.size() > 0 && tabKey.contains(32)) {
-			for (Entity e : m_gp.getM_listEntity()) {
-				System.out.println(e instanceof Door);
-				if (e instanceof Door) {
-					((Door) e).interact();
-				}
+
+		for (Entity e : m_gp.getM_listEntity()) {
+			
+			if (e instanceof Door && this.isCollisionWithEnt(e)) {
+				((Door) e).interact();
+				
 			}
 		}
+
 		move();
 		for (Entity e : m_gp.getM_listEntity()) {
 			if (isCollisionWithEnt(e)) {
