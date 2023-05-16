@@ -58,7 +58,7 @@ public abstract class Entity {
 
 	public boolean isCollision(int x, int y) {
 		int[][] cord_tuil = getHitbox(x, y);
-		for (int i = 0; i < FixedValues.box_width; i++) {
+		for (int i = 0; i < FixedValues.box_length; i++) {
 			int tileId = m_gp.getM_tileM().getM_mapTileNum()[cord_tuil[0][i]][cord_tuil[1][i]];
 			if (m_gp.getM_tileM().getM_tile()[tileId].m_collision) {
 				return true;
@@ -69,15 +69,20 @@ public abstract class Entity {
 	}
 
 	public boolean isCollisonWithEnt(Entity e) {
-		int[][] cord_tuil = getHitbox(e.m_x, e.m_y);
-		for (int i = 0; i < FixedValues.box_width; i++) {
-			int tileId = m_gp.getM_tileM().getM_mapTileNum()[cord_tuil[0][i]][cord_tuil[1][i]];
-			if (m_gp.getM_tileM().getM_tile()[tileId].m_collision) {
+		int[][] entiteBox = getHitbox(e.m_x, e.m_y);
+		int[][] m_htibox = getHitbox(m_x, m_y);
+		for (int i = 0; i < FixedValues.box_length; i++) {
+			if (insideTheBox(m_htibox, entiteBox[0][i], entiteBox[1][i])) {
+				System.out.println("touchepull");
 				return true;
 			}
 		}
 		return false;
 
+	}
+
+	private boolean insideTheBox(int[][] box, int x, int y) {
+		return x > box[0][0] && x < box[0][1] && y > box[1][0] && y < box[1][1];
 	}
 
 }

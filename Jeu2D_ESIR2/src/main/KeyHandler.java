@@ -9,34 +9,33 @@ import java.util.Set;
  * Gestionnaire d'évènements (touche clavier)
  *
  */
-public class KeyHandler implements KeyListener{
-    
-    Set<Integer> key;
-    
-    KeyHandler(){
-        key = new HashSet<Integer>();
-    }
-    
-    public Set<Integer> getKey() {
-        return key;
-    }
-    
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
+public class KeyHandler implements KeyListener {
 
-    @Override
-    public void keyPressed(KeyEvent e) {
-        // récupère le code du boutton appuyé
-        int code = e.getKeyCode();
-        System.out.println(code);
-        
-        key.add(code);
-    }
+	Set<Integer> key;
 
-    @Override
-    public void keyReleased(KeyEvent e) {
-        key.remove(e.getKeyCode());
-    }
+	KeyHandler() {
+		key = new HashSet<Integer>();
+	}
+
+	public Set<Integer> getKey() {
+		return key;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// récupère le code du boutton appuyé
+		int code = e.getKeyCode();
+
+		key.add(code);
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		key.remove(e.getKeyCode());
+	}
 
 }
