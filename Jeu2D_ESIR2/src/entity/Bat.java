@@ -16,7 +16,7 @@ public class Bat extends Monster{
     int m_attack;
     
     public Bat(GamePanel a_gp){
-        super(50, 50, 4, ImagePath.getInstance().BAT,a_gp);
+        super(50, 50, 4, ImagePath.getInstance().BAT,a_gp,3,5);
         this.m_health = 3;
         this.m_attack = 1;
     }

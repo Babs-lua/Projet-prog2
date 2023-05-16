@@ -1,16 +1,10 @@
 package entity;
 
-import java.awt.Color;
-
-import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.HashSet;
-
-import javax.imageio.ImageIO;
+import java.util.Set;
 
 import controls.Controls;
+import controls.FixedValues;
 import main.GamePanel;
 import main.KeyHandler;
 import resources.ImagePath;
@@ -20,7 +14,10 @@ import resources.ImagePath;
  *
  */
 public class Player extends Entity {
-
+	
+	int health;
+	int attack;
+	Set<Object> inventory; 
 	KeyHandler m_keyH;
 
 	/**
@@ -33,21 +30,13 @@ public class Player extends Entity {
 		super(500,350,4,ImagePath.getInstance().PLAYER,a_gp);
 		this.m_gp = a_gp;
 		this.m_keyH = a_keyH;
-		this.getPlayerImage();
+		inventory= new HashSet<>();
+		int health = FixedValues.MAXHEALTH;
+		int attack = FixedValues.ATTACK;
 	}
 
-	
-
-	/**
-	 * Récupération de l'image du personnage
-	 */
-	public void getPlayerImage() {
-		// gestion des expections
-		try {
-			m_idleImage = ImageIO.read(getClass().getResource("/Player/superhero.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public void attack(Monster m) {
+		m.setLife_point(m.getLife_point()-attack);
 	}
 
 	/**
