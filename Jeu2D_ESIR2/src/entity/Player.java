@@ -15,10 +15,12 @@ import resources.ImagePath;
  */
 public class Player extends Entity {
 
-	int health;
-	int attack;
-	Set<Object> inventory;
-	KeyHandler m_keyH;
+	private int health;
+	private int attack;
+	private Set<Object> inventory;
+	private KeyHandler m_keyH;
+
+	
 
 	/**
 	 * Constructeur de Player
@@ -93,5 +95,37 @@ public class Player extends Entity {
 			}
 
 		}moveHitBox(m_x, m_y);
+	}
+	
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+	public int getAttack() {
+		return attack;
+	}
+
+	public void setAttack(int attack) {
+		this.attack = attack;
+	}
+
+	public Set<Object> getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Set<Object> inventory) {
+		this.inventory = inventory;
+	}
+
+	public KeyHandler getM_keyH() {
+		return m_keyH;
+	}
+
+	public void setM_keyH(KeyHandler m_keyH) {
+		this.m_keyH = m_keyH;
 	}
 }
