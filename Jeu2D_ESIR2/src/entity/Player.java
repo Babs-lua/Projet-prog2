@@ -45,8 +45,9 @@ public class Player extends Entity {
 	public void update() {
 		for (Entity e : m_gp.getM_listEntity()) {
 			if (e instanceof Door && this.isCollisionWithEnt(e)) {
-				((Door) e).interact();
-				setPosition(((Door) e).getX_sortie(), ((Door) e).getY_sortie());
+				Door d = (Door)e;
+				d.interact();
+				setPosition(d.getX_sortie(), d.getY_sortie());
 			}
 		}
 
