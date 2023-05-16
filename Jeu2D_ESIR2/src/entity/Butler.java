@@ -10,10 +10,10 @@ public class Butler extends Monster{
     
     int m_health;
     int m_attack;
-    GamePanel m_gp;
     
-    public Butler(){
-        super(10, 100, 4, ImagePath.getInstance().BUTLER);
+    
+    public Butler(GamePanel a_gp){
+        super(10, 100, 4, ImagePath.getInstance().BUTLER,a_gp);
         this.m_health = 5;
         this.m_attack = 2;
     }

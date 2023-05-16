@@ -4,11 +4,13 @@ import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.JPanel;
 
+import entity.Entity;
 import entity.Player;
 import tile.TileManager;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 /**
  * Panel principal du jeu contenant la map principale
@@ -25,7 +27,12 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COL; // 768 pixels
 	public final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREE_ROW;	// 576 pixels
 	
-	
+	private ArrayList<Entity> m_listEntity;
+
+	public void setM_listEntity(ArrayList<Entity> m_listEntity) {
+		this.m_listEntity = m_listEntity;
+	}
+
 
 	// FPS : taux de rafraichissement
 	int m_FPS;
