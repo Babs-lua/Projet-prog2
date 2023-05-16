@@ -28,7 +28,7 @@ public class Butler extends Monster {
 	@Override
 	public void move() {
 		perception();
-		if (isCollisionWithEnt(m_gp.getM_Player())||perceived || memoryCycle % 120 > 0) {
+		if (perceived || memoryCycle % 120 > 0) {
 			memoryCycle++;
 			if (!isCollisionWithEnt(m_gp.getM_Player())) {
 				int deplacement_x = m_gp.getM_Player().m_x - m_x;
