@@ -8,23 +8,16 @@ import javax.imageio.ImageIO;
 public class ImagePath {
 	private static ImagePath imgStore;
 
-	private String wall = "/tile/BRICK.png";
-	private String barrier = "";
-	private String grass = "/tile/GRASS.png";
-	private String butler = "";
-	private String bat = "";
-	private String player = "/Player/superhero.png";
-	private String lava = "/tiles/LAVA.png";
-
 	public BufferedImage WALL;
 	public BufferedImage BARRIER;
+	public BufferedImage GRASS;
 	public BufferedImage PLAYER;
 
 	private ImagePath() {
 		try {
-			WALL = ImageIO.read(getClass().getResource(wall));
-			BARRIER= ImageIO.read(getClass().getResource(barrier));
-			PLAYER=ImageIO.read(getClass().getResource(player));
+			WALL = ImageIO.read(getClass().getResource("/tiles/BRICK2.png"));
+			GRASS = ImageIO.read(getClass().getResource("/tiles/GRASS.png"));
+			PLAYER = ImageIO.read(getClass().getResource("/Player/superhero.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

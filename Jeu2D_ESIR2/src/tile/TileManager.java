@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 import main.GamePanel;
+import resources.ImagePath;
 
 /**
  * 
@@ -22,6 +23,16 @@ public class TileManager {
 	int m_maxTiles = 10;	//nombre maximum de tiles chargeable dans le jeu
 	int m_mapTileNum[][];	//répartition des tiles dans la carte du jeu
 	
+	public int[][] getM_mapTileNum() {
+		return m_mapTileNum;
+	}
+	
+	public Tile[] getM_tile() {
+		return m_tile;
+	}
+
+	
+
 	/**
 	 * Constructeur
 	 * @param gp
@@ -40,10 +51,11 @@ public class TileManager {
 	public void getTileImage() {
 		try {
 			m_tile[0] = new Tile();
-			m_tile[0].m_image = ImageIO.read(getClass().getResource("/tiles/GRASS.png"));
+			m_tile[0].m_image = ImagePath.getInstance().GRASS;
 			
 			m_tile[1] = new Tile();
-			m_tile[1].m_image = ImageIO.read(getClass().getResource("/tiles/BRICK2.png"));
+			m_tile[1].m_image = ImagePath.getInstance().WALL;
+			m_tile[1].m_collision=true;
 			
 			m_tile[2] = new Tile();
 			m_tile[2].m_image = ImageIO.read(getClass().getResource("/tiles/WATER.png"));

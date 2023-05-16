@@ -95,9 +95,15 @@ public class GamePanel extends JPanel implements Runnable{
 	 * Mise à jour des données des entités
 	 */
 	public void update() {
+		
 		m_player.update();
 	}
 	
+	public TileManager getM_tileM() {
+		return m_tileM;
+	}
+
+
 	/**
 	 * Affichage des éléments
 	 */
