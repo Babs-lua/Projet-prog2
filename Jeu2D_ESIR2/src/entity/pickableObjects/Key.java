@@ -3,14 +3,14 @@ package entity.pickableObjects;
 import java.awt.image.BufferedImage;
 
 import entity.Entity;
+import entity.Objet;
 import resources.ImagePath;
 
-public class Key extends Object {
+public class Key extends Objet {
 
-	Door opener;
 	
 	public Key(int x,int y) {
-		super(x,y,0,ImagePath.getInstance().KEY);
+		super(x,y,ImagePath.getInstance().KEY);
 		
 	}
 	

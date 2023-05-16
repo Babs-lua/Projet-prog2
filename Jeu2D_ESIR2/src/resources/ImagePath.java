@@ -15,6 +15,7 @@ public class ImagePath {
 	public BufferedImage BAT;
 	public BufferedImage BUTLER;
 	public BufferedImage BARRIER;
+	public BufferedImage KEY;
 
 
 	private ImagePath() {
