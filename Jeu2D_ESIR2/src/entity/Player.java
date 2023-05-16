@@ -81,7 +81,7 @@ public class Player extends Entity {
 				int new_x = m_x;
 				int new_y = m_y;
 				if (keyCode == Controls.goRight) {
-					new_x = Math.min(new_x + m_speed, m_gp.SCREEN_WIDTH - m_gp.TILE_SIZE);
+					new_x = Math.min(new_x + m_speed, m_gp.SCREEN_WIDTH - m_gp.TILE_SIZE)-1;
 				}
 				if (keyCode == Controls.goLeft) {
 
