@@ -18,7 +18,7 @@ public abstract class Monster extends Entity {
 		super(a_x, a_y, a_speed, a_idleImage, a_gp);
 		object = new ArrayList<Objet>();
 		this.life_point = life_point;
-		this.damages = damages;
+		this.setDamages(damages);
 
 	}
 
@@ -47,6 +47,14 @@ public abstract class Monster extends Entity {
 		// affiche le personnage avec l'image "image", avec les coordonnées x et y, et
 		// de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
 		a_g2.drawImage(l_image, m_x, m_y, m_gp.TILE_SIZE, m_gp.TILE_SIZE, null);
+	}
+
+	public int getDamages() {
+		return damages;
+	}
+
+	public void setDamages(int damages) {
+		this.damages = damages;
 	}
 
 }
