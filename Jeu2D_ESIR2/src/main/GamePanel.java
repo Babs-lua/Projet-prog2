@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.JPanel;
 
+import entity.Bat;
+import entity.Butler;
 import entity.Entity;
 import entity.Player;
 import tile.TileManager;
@@ -11,6 +13,7 @@ import tile.TileManager;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Panel principal du jeu contenant la map principale
@@ -26,12 +29,6 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int MAX_SCREE_ROW = 12; 					 	// ces valeurs donnent une résolution 4:3
 	public final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COL; // 768 pixels
 	public final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREE_ROW;	// 576 pixels
-	
-	private ArrayList<Entity> m_listEntity;
-
-	public void setM_listEntity(ArrayList<Entity> m_listEntity) {
-		this.m_listEntity = m_listEntity;
-	}
 
 
 	// FPS : taux de rafraichissement
@@ -42,6 +39,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread m_gameThread;
 	Player m_player;
 	TileManager m_tileM;
+	ArrayList<Entity> m_listEntity;
 		
 	/**
 	 * Constructeur
@@ -52,11 +50,16 @@ public class GamePanel extends JPanel implements Runnable{
 		m_player = new Player(this, m_keyH);
 		m_tileM = new TileManager(this);
 		
+		
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true);
 		this.addKeyListener(m_keyH);
 		this.setFocusable(true);
+	}
+	
+	public void setM_listEntity(ArrayList<Entity> m_listEntity) {
+		this.m_listEntity = m_listEntity;
 	}
 	
 	/**
@@ -121,6 +124,9 @@ public class GamePanel extends JPanel implements Runnable{
 		Graphics2D g2 = (Graphics2D) g;
 		m_tileM.draw(g2);
 		m_player.draw(g2);
+		for(Entity e: m_listEntity) {
+			e.draw(g2);
+		}
 		g2.dispose();
 	}
 	
