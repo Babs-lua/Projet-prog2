@@ -4,10 +4,10 @@ import entity.Objet;
 import main.GamePanel;
 import resources.ImagePath;
 
-public class Bed extends Objet{
+public class Library extends Objet{
 
-	public Bed(int x, int y, GamePanel gp) {
-		super(x,y,ImagePath.getInstance().BED,gp);
+	public Library(int x, int y, GamePanel gp) {
+		super(x,y,ImagePath.getInstance().COBWEB,gp);
 	}
 	
 	@Override
