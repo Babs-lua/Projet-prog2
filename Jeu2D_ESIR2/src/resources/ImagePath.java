@@ -9,9 +9,13 @@ public class ImagePath {
 	private static ImagePath imgStore;
 
 	public BufferedImage WALL;
-	public BufferedImage BARRIER;
 	public BufferedImage GRASS;
 	public BufferedImage PLAYER;
+	//TODO
+	public BufferedImage BAT;
+	public BufferedImage BUTLER;
+	public BufferedImage BARRIER;
+
 
 	private ImagePath() {
 		try {
