@@ -46,8 +46,7 @@ public class Player extends Entity {
 		for (Entity e : m_gp.getM_listEntity()) {
 			if (e instanceof Door && this.isCollisionWithEnt(e)) {
 				((Door) e).interact();
-				m_x = ((Door) e).getX_sortie();
-				m_y = ((Door) e).getY_sortie();
+				setPosition(((Door) e).getX_sortie(), ((Door) e).getY_sortie());
 			}
 		}
 
@@ -80,11 +79,15 @@ public class Player extends Entity {
 				}
 				
 				if (!isCollision(new_x, new_y) && !findCollision) {
-					m_x = new_x;
-					m_y = new_y;
+					setPosition(new_x, new_y);
 				}
 			}
 		}
+	}
+	
+	public void setPosition(int x, int y) {
+		m_x = x;
+		m_y = y;
 		moveHitBox(m_x, m_y);
 	}
 
