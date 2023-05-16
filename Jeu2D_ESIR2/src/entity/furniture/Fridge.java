@@ -1,5 +1,6 @@
-package entity;
+package entity.furniture;
 
+import entity.Objet;
 import main.GamePanel;
 import resources.ImagePath;
 
