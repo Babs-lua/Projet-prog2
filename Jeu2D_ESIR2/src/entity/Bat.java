@@ -12,13 +12,8 @@ import resources.ImagePath;
 
 public class Bat extends Monster {
 
-	private int m_health;
-	private int m_attack;
-
 	public Bat(GamePanel a_gp) {
-		super(50, 50, 4, ImagePath.getInstance().BAT, a_gp, 3, 5);
-		this.m_health = 3;
-		this.m_attack = 1;
+		super(50, 50, 3, ImagePath.getInstance().BAT, a_gp, 3, 1,30);
 	}
 
 	@Override
@@ -36,37 +31,4 @@ public class Bat extends Monster {
 		m_x += deplacementNormaliseX;
 		m_y += deplacementNormaliseY;
 	}
-
-	@Override
-	public void dealDamage() {
-		
-	}
-	
-	@Override
-	public Objet dropObjet() {
-		return null;
-	}
-	
-	public int getM_health() {
-		return m_health;
-	}
-
-	public void setM_health(int m_health) {
-		this.m_health = m_health;
-	}
-
-	public int getM_attack() {
-		return m_attack;
-	}
-
-	public void setM_attack(int m_attack) {
-		this.m_attack = m_attack;
-	}
-
-	@Override
-	public void update() {
-		move();
-
-	}
-
 }
