@@ -2,6 +2,7 @@ package resources;
 
 import java.util.ArrayList;
 
+import entity.Butler;
 import entity.Door;
 import entity.Entity;
 import main.GamePanel;
@@ -25,11 +26,13 @@ public class RoomManager {
 		
 		Roomtest = new Room(a_gp, "/maps/map.txt", new ArrayList<>());
 		
-		RoomGarden.push_entity(new Door(336, 0, ImagePath.getInstance().MAINDOOR, a_gp, RoomEntryMansion));
+		RoomGarden.push_entity(new Door(336, 0, ImagePath.getInstance().MAINDOOR, a_gp, RoomEntryMansion, 336, 470));
 		
-		RoomEntryMansion.push_entity(new Door(336, 528, ImagePath.getInstance().MAINDOOR, a_gp, RoomGarden));
+		RoomEntryMansion.push_entity(new Door(336, 528, ImagePath.getInstance().MAINDOOR, a_gp, RoomGarden, 336, 48));
 		
-		RoomEntryMansion.push_entity(new Door(336, 0, ImagePath.getInstance().MAINDOOR, a_gp, Roomtest));
+		RoomEntryMansion.push_entity(new Door(336, 0, ImagePath.getInstance().MAINDOOR, a_gp, Roomtest, 336, 470));
+		
+		RoomEntryMansion.push_entity(new Butler(200, 200, a_gp));
 		
 	}
 	

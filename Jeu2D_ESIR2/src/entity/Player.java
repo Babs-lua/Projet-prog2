@@ -20,8 +20,6 @@ public class Player extends Entity {
 	private Set<Object> inventory;
 	private KeyHandler m_keyH;
 
-	
-
 	/**
 	 * Constructeur de Player
 	 * 
@@ -45,23 +43,15 @@ public class Player extends Entity {
 	 * Mise à jour des données du joueur
 	 */
 	public void update() {
-
-		HashSet<Integer> tabKey = (HashSet<Integer>) m_keyH.getKey();
-
 		for (Entity e : m_gp.getM_listEntity()) {
-			
 			if (e instanceof Door && this.isCollisionWithEnt(e)) {
 				((Door) e).interact();
-				
+				m_x = ((Door) e).getX_sortie();
+				m_y = ((Door) e).getY_sortie();
 			}
 		}
 
 		move();
-		for (Entity e : m_gp.getM_listEntity()) {
-			if (isCollisionWithEnt(e)) {
-			}
-
-		}
 	}
 
 	public void move() {
@@ -73,31 +63,31 @@ public class Player extends Entity {
 				int new_y = m_y;
 				if (keyCode == Controls.goRight) {
 					new_x = Math.min(new_x + m_speed, m_gp.SCREEN_WIDTH - m_gp.TILE_SIZE) - 1;
-				}
-				if (keyCode == Controls.goLeft) {
-
+				} else if (keyCode == Controls.goLeft) {
 					new_x = Math.max(new_x - m_speed, 0) + 1;
-
-				}
-				if (keyCode == Controls.goUp) {
-
+				} else if (keyCode == Controls.goUp) {
 					new_y = Math.max(new_y - m_speed, 0) + 1;
-
-				}
-				if (keyCode == Controls.goDown) {
+				} else if (keyCode == Controls.goDown) {
 					new_y = Math.min(new_y + m_speed, m_gp.SCREEN_HEIGHT - m_gp.TILE_SIZE) - 1;
 				}
-				if (!isCollision(new_x, new_y)) {
+
+				boolean findCollision = false;
+				for (Entity e : m_gp.getM_listEntity()) {
+					if (isCollisionWithEnt(e)) {
+						findCollision = true;
+						break;
+					}
+				}
+				
+				if (!isCollision(new_x, new_y) && !findCollision) {
 					m_x = new_x;
 					m_y = new_y;
-					
 				}
-
 			}
-
-		}moveHitBox(m_x, m_y);
+		}
+		moveHitBox(m_x, m_y);
 	}
-	
+
 	public int getHealth() {
 		return health;
 	}
