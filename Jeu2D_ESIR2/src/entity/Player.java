@@ -56,6 +56,10 @@ public class Player extends Entity {
 	 */
 	public void update() {
 		
+		HashSet<Integer> tabKey = (HashSet<Integer>) m_keyH.getKey();
+		if(tabKey.size()>0 && tabKey.contains(32)) {
+			m_gp.getM_tileM().loadMap("/maps/map.txt");
+		}
 		move();
 
 	}
@@ -108,17 +112,17 @@ public class Player extends Entity {
 	public int[][] getTileCoord(int x, int y) {
 		int[][] tmp = new int[2][4];
 		// haut gauche
-		tmp[0][0] = (x) / m_gp.TILE_SIZE;
-		tmp[1][0] = (y) / m_gp.TILE_SIZE;
+		tmp[0][0] = (x+10) / m_gp.TILE_SIZE;
+		tmp[1][0] = (y+10) / m_gp.TILE_SIZE;
 		// haut droite
-		tmp[0][1] = (x + m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
-		tmp[1][1] = (y) / m_gp.TILE_SIZE;
+		tmp[0][1] = (x-10 + m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
+		tmp[1][1] = (y+10) / m_gp.TILE_SIZE;
 		// bas gauche
-		tmp[0][2] = (x) / m_gp.TILE_SIZE;
-		tmp[1][2] = (y + m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
+		tmp[0][2] = (x+10) / m_gp.TILE_SIZE;
+		tmp[1][2] = (y -10+ m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
 		// bas droite
-		tmp[0][3] = (x + m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
-		tmp[1][3] = (y + m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
+		tmp[0][3] = (x -10 + m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
+		tmp[1][3] = (y -10 + m_gp.TILE_SIZE) / m_gp.TILE_SIZE;
 		return tmp;
 	}
 
