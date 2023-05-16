@@ -7,8 +7,8 @@ import entity.Entity;
 
 public class Room {
 
-	GamePanel m_gp;
-	String m_map;
+	private GamePanel m_gp;
+	private String m_map;
 	ArrayList<Entity> m_listEntity;
 	
 	public Room(GamePanel gp, String map, List<Entity> listEntity) {
@@ -20,6 +20,9 @@ public class Room {
 	public void updateGamePanel() {
 		m_gp.m_tileM.loadMap(m_map);
 		m_gp.setM_listEntity(m_listEntity);
+	}
+	public void push_entity(Entity e) {
+		m_listEntity.add(e);
 	}
 
 }

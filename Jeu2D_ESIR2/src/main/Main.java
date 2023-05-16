@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import entity.Door;
 import entity.Entity;
 import resources.ImagePath;
+import resources.RoomManager;
 
 /**
  * 
@@ -14,6 +15,8 @@ import resources.ImagePath;
  *
  */
 public class Main {
+	
+	
 
 	public static void main(String[] args) {
 		ImagePath.createSingleton();
@@ -25,9 +28,8 @@ public class Main {
 		
 		//Ajout du panel du jeu et démarrage du thread principal
 		GamePanel gamePanel = new GamePanel();
-		ArrayList<Entity> tmp = new ArrayList<>();
-		tmp.add(new Door(400, 288, ImagePath.getInstance().MAINDOOR, gamePanel, new Room(gamePanel, "/maps/map.txt",tmp)));
-		gamePanel.setM_listEntity(tmp);
+		RoomManager room_manager = RoomManager.getInstance(gamePanel);
+		room_manager.RoomGarden.updateGamePanel();
 		window.add(gamePanel);
 		window.pack();
 		
