@@ -2,6 +2,8 @@ package main;
 
 import javax.swing.JFrame;
 
+import resources.ImagePath;
+
 /**
  * 
  * Classe principale du jeu
@@ -10,7 +12,7 @@ import javax.swing.JFrame;
 public class Main {
 
 	public static void main(String[] args) {
-
+		ImagePath.createSingleton();
 		//Fenêtre de lancement du jeu
 		JFrame window = new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
