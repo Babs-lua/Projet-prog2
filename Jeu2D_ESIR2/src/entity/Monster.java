@@ -60,6 +60,7 @@ public abstract class Monster extends Entity {
 	public void dropObjet() {
 		m_gp.getM_listEntity().addAll(inventaire);
 		m_gp.getM_listEntity().remove(this);
+		System.out.println(m_gp.getM_listEntity());
 	}
 
 	public void update() {

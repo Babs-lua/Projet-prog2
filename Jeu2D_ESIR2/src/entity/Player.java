@@ -91,7 +91,7 @@ public class Player extends Entity {
 
 	public void collectItem(Objet item) {
 		inventory.add(item);
-		m_gp.getM_listEntity().remove();
+		m_gp.getM_listEntity().remove(item);
 	}
 
 	public void attack(Monster m) {
@@ -109,7 +109,9 @@ public class Player extends Entity {
 		if (m_Status == Status.alive) {
 			move();
 			for (Entity e : m_gp.getM_listEntity()) {
+				System.out.println(m_gp);
 				if (e instanceof Door && this.isCollisionWithEnt(e)) {
+					System.out.println(e);
 					((Door) e).interact();
 					setPosition(((Door) e).getX_sortie(), ((Door) e).getY_sortie());
 				}

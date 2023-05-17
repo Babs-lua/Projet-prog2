@@ -159,7 +159,7 @@ public class GamePanel extends JPanel implements Runnable {
 				h.draw(g2);
 			}
 		}
-		if (m_listEntity != null) {
+		if (!m_listEntity.isEmpty()) {
 			for (Entity e : m_listEntity) {
 				e.draw(g2);
 			}
@@ -167,5 +167,15 @@ public class GamePanel extends JPanel implements Runnable {
 
 		g2.dispose();
 	}
+
+	@Override
+	public String toString() {
+		String s="";
+		for(Entity e : m_listEntity)
+		s+=e.toString() + " | ";
+		return s;
+	}
+	
+	
 
 }
