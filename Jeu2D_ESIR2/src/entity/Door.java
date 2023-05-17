@@ -43,7 +43,6 @@ public class Door extends Objet {
 		
 	}
 	public void interact() {
-		System.out.println("test");
 		m_sortie.updateGamePanel();
 	}
 
