@@ -57,6 +57,7 @@ public class ImagePath {
 			BED2 = ImageIO.read(getClass().getResource("/tiles/BED2.png"));
 			BED3 = ImageIO.read(getClass().getResource("/tiles/BED3.png"));
 			BED4 = ImageIO.read(getClass().getResource("/tiles/BED4.png"));
+			BOTFRIGO = ImageIO.read(getClass().getResource("/tiles/.png"));
 			BLACK = ImageIO.read(getClass().getResource("/tiles/BLACK.jpg"));
 			BUTLER = ImageIO.read(getClass().getResource("/tiles/SKELETON.png"));
 			CARPET = ImageIO.read(getClass().getResource("/tiles/CARPET.png"));
