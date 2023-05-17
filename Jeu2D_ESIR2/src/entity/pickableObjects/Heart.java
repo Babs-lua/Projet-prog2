@@ -10,8 +10,8 @@ public class Heart extends Objet implements Buff {
 	private int effect;
 
 	public Heart(int x, int y, GamePanel gp) {
-		super(x, y, ImagePath.getInstance().SWORD, gp);
-		this.effect = 1;
+		super(x, y, ImagePath.getInstance().HP_UP, gp);
+		this.effect = 2;
 	}
 
 	@Override
@@ -22,7 +22,7 @@ public class Heart extends Objet implements Buff {
 
 	@Override
 	public void effect(Player p) {
-		p.setHealth(p.getHealth()-effect);
+		p.setHealth(p.getHealth()+effect);
 	}
 
 }
