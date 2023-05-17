@@ -3,13 +3,20 @@ package entity.pickableObjects;
 import java.awt.image.BufferedImage;
 
 import entity.Objet;
+import entity.Player;
 import main.GamePanel;
 
-public abstract class Buff extends Objet {
 
-	int effect;
+/**
+ * 
+ * @author basti
+ * @brief Comportement d'un buff 
+ */
+public interface Buff {
+
 	
-	public Buff(int x, int y,BufferedImage img, GamePanel gp) {
-		super(x,y,img, gp);
-	}
+	/**
+	 * @param p Player qui va subir l'effet du buff
+	 */
+	public void effect(Player p);
 }
