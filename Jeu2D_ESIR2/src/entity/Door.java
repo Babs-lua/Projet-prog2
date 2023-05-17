@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import entity.Objet;
 import main.GamePanel;
 import main.Room;
+import resources.ImagePath;
 
 public class Door extends Objet {
 
@@ -20,8 +21,8 @@ public class Door extends Objet {
 		this.m_sortie = m_sortie;
 	}
 
-	public Door(int x, int y,BufferedImage img, GamePanel a_gp, Room room_sortie, int x_sortie, int y_sortie) {
-		super(x, y, img, a_gp);
+	public Door(int x, int y, GamePanel a_gp, Room room_sortie, int x_sortie, int y_sortie) {
+		super(x, y, ImagePath.getInstance().TRANSPARENT,a_gp);
 		
 		m_sortie = room_sortie;
 		m_x_sortie = x_sortie;

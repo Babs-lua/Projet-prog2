@@ -4,10 +4,10 @@ import entity.Objet;
 import main.GamePanel;
 import resources.ImagePath;
 
-public class Bed extends Objet{
-
-	public Bed(int x, int y, GamePanel gp) {
-		super(x,y,ImagePath.getInstance().TRANSPARENT,gp);
+public class Fridge extends Objet{
+	
+	public Fridge(int x, int y, GamePanel gp) {
+		super(x,y,ImagePath.getInstance().COBWEB,gp);
 	}
 	
 	@Override
@@ -15,4 +15,5 @@ public class Bed extends Objet{
 		// TODO Auto-generated method stub
 		
 	}
+
 }

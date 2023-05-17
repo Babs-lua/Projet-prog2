@@ -4,6 +4,7 @@ import controls.Keybinding.SpecialKeys;
 
 public class Controls
 {
+	public static final int shootUp = 0;
 	public static int goUp = Keybinding.keycodeOf('z');
 	public static int goDown = Keybinding.keycodeOf('s');
 	public static int goRight = Keybinding.keycodeOf('d');
