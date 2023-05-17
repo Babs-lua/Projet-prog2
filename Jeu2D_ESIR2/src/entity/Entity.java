@@ -18,7 +18,7 @@ public abstract class Entity {
 	protected BufferedImage m_idleImage; // Une image de l'entité
 	protected Rectangle m_hitbox;
 
-	Entity(int a_x, int a_y, int a_speed, BufferedImage a_idleImage, GamePanel a_gp) {
+	protected Entity(int a_x, int a_y, int a_speed, BufferedImage a_idleImage, GamePanel a_gp) {
 		this.m_x = a_x;
 		this.m_y = a_y;
 		m_hitbox = new Rectangle(a_x, a_y, FixedValues.TILE, FixedValues.TILE);
