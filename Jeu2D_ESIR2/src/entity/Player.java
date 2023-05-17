@@ -18,6 +18,11 @@ import resources.ImagePath;
  */
 public class Player extends Entity {
 
+	public enum Status {
+		alive, dead
+	}
+
+	private Status m_Status;
 	private int healCycle;
 	private int health;
 	private int attack;
@@ -43,34 +48,35 @@ public class Player extends Entity {
 		this.memoryCycle = 0;
 		this.frequence = 60;
 		this.weapon = new Fist(0, 0, a_gp);
-		this.healCycle=0;
+		this.healCycle = 0;
+		this.m_Status = Status.alive;
 	}
-	
-	public boolean heal() {
-        boolean healing = false;
-        HashSet<Integer> tabKey = (HashSet<Integer>) m_keyH.getKey();
-        if (tabKey.size() > 0) {
-            for (Integer i : tabKey) {
-                int keyCode = (int) i;
-                if (keyCode == Controls.heal) {
-                    healing = true;
-                }
-            }
-        }
-        return healing;
-    }
 
-    public void fullLife() {
-        if (heal() && healCycle >= frequence) {
-            for (Entity entity : m_gp.getM_listEntity()) {
-                if (entity instanceof Fridge && isCollisionWithEnt(entity)) {
-                    ((Fridge) entity).heal();
-                }
-            }
-            memoryCycle = 0;
-        }
-        memoryCycle++;
-    }
+	public boolean heal() {
+		boolean healing = false;
+		HashSet<Integer> tabKey = (HashSet<Integer>) m_keyH.getKey();
+		if (tabKey.size() > 0) {
+			for (Integer i : tabKey) {
+				int keyCode = (int) i;
+				if (keyCode == Controls.heal) {
+					healing = true;
+				}
+			}
+		}
+		return healing;
+	}
+
+	public void fullLife() {
+		if (heal() && healCycle >= frequence) {
+			for (Entity entity : m_gp.getM_listEntity()) {
+				if (entity instanceof Fridge && isCollisionWithEnt(entity)) {
+					((Fridge) entity).heal();
+				}
+			}
+			memoryCycle = 0;
+		}
+		memoryCycle++;
+	}
 
 	public void attack(Monster m) {
 		m.setLife_point(m.getLife_point() - attack);
@@ -80,14 +86,20 @@ public class Player extends Entity {
 	 * Mise à jour des données du joueur
 	 */
 	public void update() {
-		move();
-		for (Entity e : m_gp.getM_listEntity()) {
-			if (e instanceof Door && this.isCollisionWithEnt(e)) {
-				((Door) e).interact();
-				setPosition(((Door) e).getX_sortie(), ((Door) e).getY_sortie());
+
+		if (health <= 0)
+			m_Status = Status.dead;
+
+		if (m_Status == Status.alive) {
+			move();
+			for (Entity e : m_gp.getM_listEntity()) {
+				if (e instanceof Door && this.isCollisionWithEnt(e)) {
+					((Door) e).interact();
+					setPosition(((Door) e).getX_sortie(), ((Door) e).getY_sortie());
+				}
 			}
+			hagla();
 		}
-		hagla();
 	}
 
 	public boolean hit() {
@@ -203,4 +215,22 @@ public class Player extends Entity {
 	public void setM_keyH(KeyHandler m_keyH) {
 		this.m_keyH = m_keyH;
 	}
+
+	public Status getM_Status() {
+		return m_Status;
+	}
+
+	public void setM_Status(Status m_Status) {
+		this.m_Status = m_Status;
+	}
+
+	public Weapon getWeapon() {
+		return weapon;
+	}
+
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
+	}
+	
+	
 }
