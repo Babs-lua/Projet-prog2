@@ -2,7 +2,7 @@ package entity;
 
 import java.util.HashSet;
 import java.util.Set;
-
+import java.awt.Rectangle;
 import controls.Controls;
 import main.GamePanel;
 import main.KeyHandler;
@@ -19,6 +19,9 @@ public class Player extends Entity {
 	private int attack;
 	private Set<Object> inventory;
 	private KeyHandler m_keyH;
+	private int memoryCycle;
+	private int frequence;
+	private Rectangle hitboxSword;
 
 	/**
 	 * Constructeur de Player
@@ -27,12 +30,14 @@ public class Player extends Entity {
 	 * @param a_keyH KeyHandler, gestionnaire des touches
 	 */
 	public Player(GamePanel a_gp, KeyHandler a_keyH) {
-		super(500, 350, 4, ImagePath.getInstance().PLAYER, a_gp);
+		super(500, 300, 4, ImagePath.getInstance().PLAYER, a_gp);
 		this.m_gp = a_gp;
 		this.m_keyH = a_keyH;
 		inventory = new HashSet<>();
 		int health = FixedValues.MAXHEALTH;
 		int attack = FixedValues.ATTACK;
+		this.memoryCycle = 0;
+		this.frequence = 60;
 	}
 
 	public void attack(Monster m) {
@@ -43,14 +48,76 @@ public class Player extends Entity {
 	 * Mise à jour des données du joueur
 	 */
 	public void update() {
+		move();
 		for (Entity e : m_gp.getM_listEntity()) {
 			if (e instanceof Door && this.isCollisionWithEnt(e)) {
 				((Door) e).interact();
 				setPosition(((Door) e).getX_sortie(), ((Door) e).getY_sortie());
 			}
 		}
+		HashSet<Integer> tabKey = (HashSet<Integer>) m_keyH.getKey();
+		if (tabKey.size() > 0) {
+			for (Integer i : tabKey) {
+				int keyCode = (int) i;
+				if (keyCode == Controls.Up) {
+					this.hitboxSword = new Rectangle(m_x, m_y - 48, FixedValues.sword_width, FixedValues.sword_length);
+					for (Entity entity : m_gp.getM_listEntity()) {
+						if (entity instanceof Monster && entity.isCollisionWithEnt(this)
+								&& memoryCycle % frequence == 0) {
+							System.out.println("haut");
 
-		move();
+							memoryCycle++;
+							attack((Monster) entity);
+						} else {
+							memoryCycle = 0;
+						}
+					}
+				}
+				if (keyCode == Controls.Down) {
+					this.hitboxSword = new Rectangle(m_x, m_y + 48, FixedValues.sword_width, FixedValues.sword_length);
+					for (Entity entity : m_gp.getM_listEntity()) {
+						if (entity instanceof Monster && entity.isCollisionWithEnt(this)
+								&& memoryCycle % frequence == 0) {
+							System.out.println("bas");
+
+							memoryCycle++;
+							attack((Monster) entity);
+						} else {
+							memoryCycle = 0;
+						}
+					}
+				}
+				if (keyCode == Controls.Left) {
+					this.hitboxSword = new Rectangle(m_x - 48, m_y, FixedValues.sword_width, FixedValues.sword_length);
+					for (Entity entity : m_gp.getM_listEntity()) {
+						if (entity instanceof Monster && entity.isCollisionWithEnt(this)
+								&& memoryCycle % frequence == 0) {
+							System.out.println("gauche");
+
+							memoryCycle++;
+							attack((Monster) entity);
+						} else {
+							memoryCycle = 0;
+						}
+					}
+				}
+				if (keyCode == Controls.Right) {
+					this.hitboxSword = new Rectangle(m_x + 48, m_y, FixedValues.sword_width, FixedValues.sword_length);
+					for (Entity entity : m_gp.getM_listEntity()) {
+						if (entity instanceof Monster && entity.isCollisionWithEnt(this)
+								&& memoryCycle % frequence == 0) {
+							System.out.println("droit");
+
+							memoryCycle++;
+							attack((Monster) entity);
+						} else {
+							memoryCycle = 0;
+						}
+					}
+				}
+			}
+		}
+
 	}
 
 	public void move() {
@@ -72,19 +139,19 @@ public class Player extends Entity {
 
 				boolean findCollision = false;
 				for (Entity e : m_gp.getM_listEntity()) {
-					if (e instanceof Objet && ((Objet)e).solid && isCollisionWithEnt(e)) {
+					if (e instanceof Objet && ((Objet) e).solid && isCollisionWithEnt(e)) {
 						findCollision = true;
 						break;
 					}
 				}
-				
+
 				if (!isCollision(new_x, new_y) && !findCollision) {
 					setPosition(new_x, new_y);
 				}
 			}
 		}
 	}
-	
+
 	public void setPosition(int x, int y) {
 		m_x = x;
 		m_y = y;

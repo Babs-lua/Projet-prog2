@@ -8,4 +8,6 @@ public class FixedValues {
 	public static final int box_length = 4;
 	public static final int box_width = 2;
 	public static final int TILE = 48;
+	public static final int sword_length = 48;
+	public static final int sword_width = 48;
 }
