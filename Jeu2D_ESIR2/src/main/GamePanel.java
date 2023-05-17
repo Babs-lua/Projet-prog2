@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 import java.util.LinkedList;
 import entity.Heart;
 import resources.FixedValues;
+import resources.ImagePath;
+
 import javax.swing.JPanel;
 
 import entity.Entity;
@@ -94,8 +96,6 @@ public class GamePanel extends JPanel implements Runnable {
 				// la m�thode "paintComponent" doit obligatoirement �tre appel�e avec
 				// "repaint()"
 				this.repaint();
-			} else {
-
 			}
 
 			// Calcule le temps de pause du thread
@@ -152,17 +152,23 @@ public class GamePanel extends JPanel implements Runnable {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-		m_tileM.draw(g2);
-		m_player.draw(g2);
-		if(!m_listHearts.isEmpty()) {
-			for(Heart h: m_listHearts) {
-				h.draw(g2);
+
+		if (m_player.getM_Status() == Status.alive) {
+			m_tileM.draw(g2);
+			m_player.draw(g2);
+
+			if(!m_listHearts.isEmpty()) {
+				for(Heart h: m_listHearts) {
+					h.draw(g2);
+				}
 			}
-		}
-		if (!m_listEntity.isEmpty()) {
-			for (Entity e : m_listEntity) {
-				e.draw(g2);
+			if (!m_listEntity.isEmpty()) {
+				for (Entity e : m_listEntity) {
+					e.draw(g2);
+				}
 			}
+		} else {
+			g2.drawImage(ImagePath.getInstance().GAME_OVER, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, null);
 		}
 
 		g2.dispose();
