@@ -25,6 +25,9 @@ public class ImagePath {
 	public BufferedImage FLOWER2;
 	public BufferedImage DOOR;
 	public BufferedImage GRASS;
+	public BufferedImage HEART_EMPTY;
+	public BufferedImage HEART_HALF;
+	public BufferedImage HEART_FULL;
 	public BufferedImage KEY;
 	public BufferedImage LOG;
 	public BufferedImage MAINDOOR;
@@ -37,9 +40,6 @@ public class ImagePath {
 	public BufferedImage WALLPAPER;
 	public BufferedImage WALLPAPERROOM;
 	public BufferedImage WOODENFLOOR;
-	
-	
-
 
 	private ImagePath() {
 		try {
@@ -60,6 +60,9 @@ public class ImagePath {
 			COBWEB = ImageIO.read(getClass().getResource("/tiles/COBWEB.png"));
 			DOOR = ImageIO.read(getClass().getResource("/tiles/DOOR.png"));
 			GRASS = ImageIO.read(getClass().getResource("/tiles/GRASS.png"));
+			HEART_EMPTY = ImageIO.read(getClass().getResource("/tiles/HEART_EMPTY.png"));
+			HEART_FULL = ImageIO.read(getClass().getResource("/tiles/HEART_FULL.png"));
+			HEART_HALF = ImageIO.read(getClass().getResource("/tiles/HEART_HALF.png"));
 			KEY = ImageIO.read(getClass().getResource("/tiles/KEY.png"));
 			LOG = ImageIO.read(getClass().getResource("/tiles/LOG.jpg"));
 			MAINDOOR = ImageIO.read(getClass().getResource("/tiles/castledoors.png"));
@@ -72,7 +75,7 @@ public class ImagePath {
 			WALL = ImageIO.read(getClass().getResource("/tiles/STONEWALL.png"));
 			WALLPAPER = ImageIO.read(getClass().getResource("/tiles/WALLPAPER.png"));
 			WALLPAPERROOM = ImageIO.read(getClass().getResource("/tiles/WALLPAPERROOM.png"));
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

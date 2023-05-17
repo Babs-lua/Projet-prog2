@@ -5,6 +5,8 @@ import java.util.Set;
 import java.awt.Rectangle;
 import controls.Controls;
 import entity.furniture.Fridge;
+import entity.pickableObjects.Chest;
+import entity.pickableObjects.Key;
 import entity.weapon.Fist;
 import entity.weapon.Weapon;
 import main.GamePanel;
@@ -26,7 +28,7 @@ public class Player extends Entity {
 	private int healCycle;
 	private int health;
 	private int attack;
-	private Set<Object> inventory;
+	private Set<Objet> inventory;
 	private KeyHandler m_keyH;
 	private int memoryCycle;
 	private int frequence;
@@ -78,6 +80,20 @@ public class Player extends Entity {
 		memoryCycle++;
 	}
 
+	public void open(Chest c) {
+		if (isCollisionWithEnt(c)) {
+			for (Objet o : inventory) {
+				if (o instanceof Key)
+					c.update();
+			}
+		}
+	}
+
+	public void collectItem(Objet item) {
+		inventory.add(item);
+		m_gp.getM_listEntity().remove();
+	}
+
 	public void attack(Monster m) {
 		m.setLife_point(m.getLife_point() - attack);
 	}
@@ -97,8 +113,16 @@ public class Player extends Entity {
 					((Door) e).interact();
 					setPosition(((Door) e).getX_sortie(), ((Door) e).getY_sortie());
 				}
+				if (e instanceof Chest && this.isCollisionWithEnt(e)) {
+					open((Chest) e);
+				}
+				if (e instanceof Objet && this.isCollisionWithEnt(e)) {
+					collectItem((Objet) e);
+				}
 			}
 			hagla();
+			fullLife();
+
 		}
 	}
 
@@ -200,11 +224,11 @@ public class Player extends Entity {
 		this.attack = attack;
 	}
 
-	public Set<Object> getInventory() {
+	public Set<Objet> getInventory() {
 		return inventory;
 	}
 
-	public void setInventory(Set<Object> inventory) {
+	public void setInventory(Set<Objet> inventory) {
 		this.inventory = inventory;
 	}
 
@@ -231,6 +255,5 @@ public class Player extends Entity {
 	public void setWeapon(Weapon weapon) {
 		this.weapon = weapon;
 	}
-	
-	
+
 }

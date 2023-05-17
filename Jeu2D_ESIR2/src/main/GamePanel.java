@@ -5,7 +5,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.LinkedList;
-
+import entity.Heart;
+import resources.FixedValues;
 import javax.swing.JPanel;
 
 import entity.Entity;
@@ -38,6 +39,7 @@ public class GamePanel extends JPanel implements Runnable {
 	Player m_player;
 	TileManager m_tileM;
 	LinkedList<Entity> m_listEntity;
+	LinkedList<Heart> m_listHearts;
 
 	/**
 	 * Constructeur
@@ -53,6 +55,12 @@ public class GamePanel extends JPanel implements Runnable {
 		this.setDoubleBuffered(true);
 		this.addKeyListener(m_keyH);
 		this.setFocusable(true);
+
+		m_listHearts = new LinkedList<>();
+
+		for (int i = 0; i < (FixedValues.MAXHEALTH / 2); i++) {
+			m_listHearts.add(new Heart(TILE_SIZE * i, 0, 2, this, m_player));
+		}
 	}
 
 	public LinkedList<Entity> getM_listEntity() {
@@ -86,27 +94,26 @@ public class GamePanel extends JPanel implements Runnable {
 				// la m�thode "paintComponent" doit obligatoirement �tre appel�e avec
 				// "repaint()"
 				this.repaint();
+			} else {
+
 			}
-			else {
-				
-			}
 
-				// Calcule le temps de pause du thread
-				try {
-					double remainingTime = nextDrawTime - System.nanoTime();
-					remainingTime = remainingTime / 1000000;
+			// Calcule le temps de pause du thread
+			try {
+				double remainingTime = nextDrawTime - System.nanoTime();
+				remainingTime = remainingTime / 1000000;
 
-					if (remainingTime < 0) {
-						remainingTime = 0;
-					}
-
-					Thread.sleep((long) remainingTime);
-					nextDrawTime += drawInterval;
-
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				if (remainingTime < 0) {
+					remainingTime = 0;
 				}
+
+				Thread.sleep((long) remainingTime);
+				nextDrawTime += drawInterval;
+
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -116,6 +123,13 @@ public class GamePanel extends JPanel implements Runnable {
 	public void update() {
 
 		m_player.update();
+
+		if(!m_listHearts.isEmpty()) {
+			for(Heart h: m_listHearts) {
+				h.update();
+			}
+		}
+		
 		if (!m_listEntity.isEmpty()) {
 			for (Entity e : m_listEntity) {
 				e.update();
@@ -140,6 +154,11 @@ public class GamePanel extends JPanel implements Runnable {
 		Graphics2D g2 = (Graphics2D) g;
 		m_tileM.draw(g2);
 		m_player.draw(g2);
+		if(!m_listHearts.isEmpty()) {
+			for(Heart h: m_listHearts) {
+				h.draw(g2);
+			}
+		}
 		if (m_listEntity != null) {
 			for (Entity e : m_listEntity) {
 				e.draw(g2);
