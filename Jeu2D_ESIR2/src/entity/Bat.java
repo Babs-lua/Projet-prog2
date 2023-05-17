@@ -63,5 +63,5 @@ public class Bat extends Monster {
 			b_gameCycle++;
 		}
 
-	}
+	moveHitBox(m_x, m_y);}
 }

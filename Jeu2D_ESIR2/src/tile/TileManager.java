@@ -20,8 +20,8 @@ import resources.ImagePath;
 public class TileManager {
 	GamePanel m_gp;			//panel du jeu principal
 	Tile[] m_tile;			//tableau de toutes les tiles possibles dans le jeu
-	int m_maxTiles = 20;	//nombre maximum de tiles chargeable dans le jeu
-	int m_mapTileNum[][];	//répartition des tiles dans la carte du jeu
+	int m_maxTiles = 30;	//nombre maximum de tiles chargeable dans le jeu
+	int m_mapTileNum[][];	//rï¿½partition des tiles dans la carte du jeu
 	
 	public int[][] getM_mapTileNum() {
 		return m_mapTileNum;
@@ -50,7 +50,9 @@ public class TileManager {
 	 */
 	public void getTileImage() {
 			m_tile[0] = new Tile();
-			m_tile[0].m_image = ImagePath.getInstance().GRASS;
+			m_tile[0].m_image = ImagePath.getInstance().BLACK;
+			m_tile[0].m_collision=true;
+			
 			
 			m_tile[1] = new Tile();
 			m_tile[1].m_image = ImagePath.getInstance().WALL;
@@ -60,13 +62,61 @@ public class TileManager {
 			m_tile[2].m_image = ImagePath.getInstance().WOODENFLOOR;
 
 			m_tile[3] = new Tile();
-			m_tile[3].m_image = ImagePath.getInstance().MAINDOOR;
+			m_tile[3].m_image = ImagePath.getInstance().DOOR;
 			m_tile[3].m_collision=true;
 			
 			m_tile[4] = new Tile();
 			m_tile[4].m_image = ImagePath.getInstance().BARRIER;
 			m_tile[4].m_collision=true;
 			
+			m_tile[5] = new Tile();
+			m_tile[5].m_image = ImagePath.getInstance().GRASS;
+			
+			m_tile[6] = new Tile();
+			m_tile[6].m_image = ImagePath.getInstance().LOG;
+			m_tile[6].m_collision=true;
+			
+			m_tile[7] = new Tile();
+			m_tile[7].m_image = ImagePath.getInstance().BACKWALLMAIN;
+			m_tile[7].m_collision=true;
+			
+			m_tile[8] = new Tile();
+			m_tile[8].m_image = ImagePath.getInstance().STAIRS;
+			
+			m_tile[9] = new Tile();
+			m_tile[9].m_image = ImagePath.getInstance().CARPET;
+			
+			m_tile[10] = new Tile();
+			m_tile[10].m_image = ImagePath.getInstance().WALLPAPER;
+			m_tile[10].m_collision=true;
+			
+			m_tile[11] = new Tile();
+			m_tile[11].m_image = ImagePath.getInstance().WALLPAPERROOM;
+			m_tile[11].m_collision=true;
+			
+			m_tile[12] = new Tile();
+			m_tile[12].m_image = ImagePath.getInstance().BED1;
+			m_tile[12].m_collision=true;
+			
+			m_tile[13] = new Tile();
+			m_tile[13].m_image = ImagePath.getInstance().BED2;
+			m_tile[13].m_collision=true;
+			
+			m_tile[14] = new Tile();
+			m_tile[14].m_image = ImagePath.getInstance().BED3;
+			m_tile[14].m_collision=true;
+			
+			m_tile[15] = new Tile();
+			m_tile[15].m_image = ImagePath.getInstance().BED4;
+			m_tile[15].m_collision=true;
+			
+			m_tile[16] = new Tile();
+			m_tile[16].m_image = ImagePath.getInstance().FLOWER1;
+			
+			m_tile[17] = new Tile();
+			m_tile[17].m_image = ImagePath.getInstance().FLOWER2;
+			
+	
 	}
 	
 	/**
@@ -82,7 +132,7 @@ public class TileManager {
 			int col = 0;
 			int row = 0;
 			
-			// Parcourir le fichier txt pour récupérer les valeurs
+			// Parcourir le fichier txt pour rï¿½cupï¿½rer les valeurs
 			while (col < m_gp.MAX_SCREEN_COL && row < m_gp.MAX_SCREE_ROW) {
 				String line = br.readLine();
 				while (col < m_gp.MAX_SCREEN_COL) {
@@ -104,7 +154,7 @@ public class TileManager {
 	}
 	
 	/**
-	 * Affichage de la carte avec les différentes tuiles
+	 * Affichage de la carte avec les diffï¿½rentes tuiles
 	 * @param g2
 	 */
 	public void draw(Graphics2D g2) {

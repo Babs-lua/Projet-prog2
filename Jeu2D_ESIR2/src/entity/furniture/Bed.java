@@ -7,7 +7,7 @@ import resources.ImagePath;
 public class Bed extends Objet{
 
 	public Bed(int x, int y, GamePanel gp) {
-		super(x,y,ImagePath.getInstance().BED,gp);
+		super(x,y,ImagePath.getInstance().TRANSPARENT,gp);
 	}
 	
 	@Override
