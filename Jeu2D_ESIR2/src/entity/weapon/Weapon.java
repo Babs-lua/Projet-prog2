@@ -1,9 +1,11 @@
-package entity;
+package entity.weapon;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.Objet;
+import entity.Player;
 import main.GamePanel;
 
 public abstract class Weapon extends Objet{

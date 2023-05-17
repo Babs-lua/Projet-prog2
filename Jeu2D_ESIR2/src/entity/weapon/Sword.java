@@ -1,9 +1,8 @@
-package entity.pickableObjects;
+package entity.weapon;
 
 import java.awt.Rectangle;
 
 import entity.Player;
-import entity.Weapon;
 import main.GamePanel;
 import resources.FixedValues;
 import resources.ImagePath;

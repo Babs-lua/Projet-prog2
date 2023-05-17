@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.awt.Rectangle;
 import controls.Controls;
+import entity.weapon.Fist;
+import entity.weapon.Weapon;
 import main.GamePanel;
 import main.KeyHandler;
 import resources.FixedValues;

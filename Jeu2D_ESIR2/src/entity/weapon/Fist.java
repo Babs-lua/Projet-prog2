@@ -1,6 +1,8 @@
-package entity;
+package entity.weapon;
 
 import java.awt.image.BufferedImage;
+
+import entity.Player;
 
 public class Fist extends Weapon {
 

@@ -2,8 +2,7 @@ package entity;
 
 import java.awt.image.BufferedImage;
 import java.awt.Rectangle;
-import entity.Monster;
-import entity.Player;
+
 import main.GamePanel;
 import resources.FixedValues;
 import resources.ImagePath;
