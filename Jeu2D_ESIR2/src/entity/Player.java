@@ -21,7 +21,7 @@ public class Player extends Entity {
 	private KeyHandler m_keyH;
 	private int memoryCycle;
 	private int frequence;
-	private Rectangle hitboxSword;
+	private Weapon weapon;
 
 	/**
 	 * Constructeur de Player
@@ -34,10 +34,11 @@ public class Player extends Entity {
 		this.m_gp = a_gp;
 		this.m_keyH = a_keyH;
 		inventory = new HashSet<>();
-		int health = FixedValues.MAXHEALTH;
-		int attack = FixedValues.ATTACK;
+		this.health = FixedValues.MAXHEALTH;
+		this.attack = FixedValues.ATTACK;
 		this.memoryCycle = 0;
 		this.frequence = 60;
+		this.weapon = new Fist(0, 0, this);
 	}
 
 	public void attack(Monster m) {
@@ -55,69 +56,51 @@ public class Player extends Entity {
 				setPosition(((Door) e).getX_sortie(), ((Door) e).getY_sortie());
 			}
 		}
+		hagla();
+	}
+
+	public boolean hit() {
+		boolean hited = false;
+		Rectangle hitbox = null;
 		HashSet<Integer> tabKey = (HashSet<Integer>) m_keyH.getKey();
 		if (tabKey.size() > 0) {
 			for (Integer i : tabKey) {
 				int keyCode = (int) i;
 				if (keyCode == Controls.Up) {
-					this.hitboxSword = new Rectangle(m_x, m_y - 48, FixedValues.sword_width, FixedValues.sword_length);
-					for (Entity entity : m_gp.getM_listEntity()) {
-						if (entity instanceof Monster && entity.isCollisionWithEnt(this)
-								&& memoryCycle % frequence == 0) {
-							System.out.println("haut");
-
-							memoryCycle++;
-							attack((Monster) entity);
-						} else {
-							memoryCycle = 0;
-						}
-					}
+					hitbox = new Rectangle(m_x, m_y - 48, FixedValues.sword_width, FixedValues.sword_length);
+					hited = true;
 				}
-				if (keyCode == Controls.Down) {
-					this.hitboxSword = new Rectangle(m_x, m_y + 48, FixedValues.sword_width, FixedValues.sword_length);
-					for (Entity entity : m_gp.getM_listEntity()) {
-						if (entity instanceof Monster && entity.isCollisionWithEnt(this)
-								&& memoryCycle % frequence == 0) {
-							System.out.println("bas");
 
-							memoryCycle++;
-							attack((Monster) entity);
-						} else {
-							memoryCycle = 0;
-						}
-					}
+				if (keyCode == Controls.Down) {
+					hitbox = new Rectangle(m_x, m_y + 48, FixedValues.sword_width, FixedValues.sword_length);
+					hited = true;
 				}
 				if (keyCode == Controls.Left) {
-					this.hitboxSword = new Rectangle(m_x - 48, m_y, FixedValues.sword_width, FixedValues.sword_length);
-					for (Entity entity : m_gp.getM_listEntity()) {
-						if (entity instanceof Monster && entity.isCollisionWithEnt(this)
-								&& memoryCycle % frequence == 0) {
-							System.out.println("gauche");
-
-							memoryCycle++;
-							attack((Monster) entity);
-						} else {
-							memoryCycle = 0;
-						}
-					}
+					hitbox = new Rectangle(m_x - 48, m_y, FixedValues.sword_width, FixedValues.sword_length);
+					hited = true;
 				}
 				if (keyCode == Controls.Right) {
-					this.hitboxSword = new Rectangle(m_x + 48, m_y, FixedValues.sword_width, FixedValues.sword_length);
-					for (Entity entity : m_gp.getM_listEntity()) {
-						if (entity instanceof Monster && entity.isCollisionWithEnt(this)
-								&& memoryCycle % frequence == 0) {
-							System.out.println("droit");
-
-							memoryCycle++;
-							attack((Monster) entity);
-						} else {
-							memoryCycle = 0;
-						}
-					}
+					hitbox = new Rectangle(m_x + 48, m_y, FixedValues.sword_width, FixedValues.sword_length);
+					hited = true;
 				}
 			}
+			weapon.setM_hitbox(hitbox);
 		}
+		return hited;
+	}
 
+	public void hagla() {
+		if (hit() && memoryCycle >= frequence) {
+			for (Entity entity : m_gp.getM_listEntity()) {
+				if (entity instanceof Monster && entity.getM_hitbox().intersects(weapon.getM_hitbox())) {
+					attack((Monster) entity);
+					System.out.println(((Monster) entity).getLife_point());
+				}
+			}
+			memoryCycle = 0;
+			weapon.setM_hitbox(null);
+		}
+		memoryCycle++;
 	}
 
 	public void move() {
