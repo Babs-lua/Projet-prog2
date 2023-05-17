@@ -27,6 +27,7 @@ public class ImagePath {
 	public BufferedImage FLOWER1;
 	public BufferedImage FLOWER2;
 	public BufferedImage DOOR;
+	public BufferedImage GAME_OVER;
 	public BufferedImage GRASS;
 	public BufferedImage HEART_EMPTY;
 	public BufferedImage HEART_HALF;
@@ -68,6 +69,7 @@ public class ImagePath {
 			COBWEB = ImageIO.read(getClass().getResource("/tiles/COBWEB.png"));
 			DOOR = ImageIO.read(getClass().getResource("/tiles/DOOR.png"));
 			GRASS = ImageIO.read(getClass().getResource("/tiles/GRASS.png"));
+			GAME_OVER = ImageIO.read(getClass().getResource("/tiles/GAMEOVER.png"));
 			HEART_EMPTY = ImageIO.read(getClass().getResource("/tiles/HEART_EMPTY.png"));
 			HEART_FULL = ImageIO.read(getClass().getResource("/tiles/HEART_FULL.png"));
 			HEART_HALF = ImageIO.read(getClass().getResource("/tiles/HEART_HALF.png"));
