@@ -44,7 +44,7 @@ public class Heart extends Entity {
         
         if(m_x < fullheart * m_gp.TILE_SIZE) {
             setM_idleImage(getImageHeart(2));
-        } else if(!parite) {
+        } else if(m_x == fullheart * m_gp.TILE_SIZE && !parite) {
             setM_idleImage(getImageHeart(1));
         } else {
             setM_idleImage(getImageHeart(0));
