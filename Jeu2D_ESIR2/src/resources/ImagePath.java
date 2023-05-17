@@ -39,6 +39,7 @@ public class ImagePath {
 	public BufferedImage MAINDOOR;
 	public BufferedImage OPENCHEST;
 	public BufferedImage PLAYER;
+	public BufferedImage SPECIAL_DOOR;
 	public BufferedImage STAIRS;
 	public BufferedImage SWORD;
 	public BufferedImage TRANSPARENT;
@@ -82,6 +83,7 @@ public class ImagePath {
 			MAINDOOR = ImageIO.read(getClass().getResource("/tiles/castledoors.png"));
 			OPENCHEST = ImageIO.read(getClass().getResource("/tiles/OPENCHEST.png"));
 			PLAYER = ImageIO.read(getClass().getResource("/Player/superhero.png"));
+			SPECIAL_DOOR = ImageIO.read(getClass().getResource(""));
 			STAIRS = ImageIO.read(getClass().getResource("/tiles/STAIRS.png"));
 			SWORD = ImageIO.read(getClass().getResource("/tiles/SWORD.png"));
 			TILE = ImageIO.read(getClass().getResource("/tiles/TILE.png"));

@@ -124,12 +124,12 @@ public class GamePanel extends JPanel implements Runnable {
 
 		m_player.update();
 
-		if(!m_listHearts.isEmpty()) {
-			for(Heart h: m_listHearts) {
+		if (!m_listHearts.isEmpty()) {
+			for (Heart h : m_listHearts) {
 				h.update();
 			}
 		}
-		
+
 		if (!m_listEntity.isEmpty()) {
 			for (Entity e : m_listEntity) {
 				e.update();
@@ -157,8 +157,8 @@ public class GamePanel extends JPanel implements Runnable {
 			m_tileM.draw(g2);
 			m_player.draw(g2);
 
-			if(!m_listHearts.isEmpty()) {
-				for(Heart h: m_listHearts) {
+			if (!m_listHearts.isEmpty()) {
+				for (Heart h : m_listHearts) {
 					h.draw(g2);
 				}
 			}
@@ -176,12 +176,10 @@ public class GamePanel extends JPanel implements Runnable {
 
 	@Override
 	public String toString() {
-		String s="";
-		for(Entity e : m_listEntity)
-		s+=e.toString() + " | ";
+		String s = "";
+		for (Entity e : m_listEntity)
+			s += e.toString() + " | ";
 		return s;
 	}
-	
-	
 
 }
