@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.awt.Rectangle;
 import controls.Controls;
+import entity.furniture.Fridge;
 import entity.weapon.Fist;
 import entity.weapon.Weapon;
 import main.GamePanel;
@@ -17,6 +18,7 @@ import resources.ImagePath;
  */
 public class Player extends Entity {
 
+	private int healCycle;
 	private int health;
 	private int attack;
 	private Set<Object> inventory;
@@ -40,8 +42,35 @@ public class Player extends Entity {
 		this.attack = FixedValues.ATTACK;
 		this.memoryCycle = 0;
 		this.frequence = 60;
-		this.weapon = new Fist(0, 0, this);
+		this.weapon = new Fist(0, 0, a_gp);
+		this.healCycle=0;
 	}
+	
+	public boolean heal() {
+        boolean healing = false;
+        HashSet<Integer> tabKey = (HashSet<Integer>) m_keyH.getKey();
+        if (tabKey.size() > 0) {
+            for (Integer i : tabKey) {
+                int keyCode = (int) i;
+                if (keyCode == Controls.heal) {
+                    healing = true;
+                }
+            }
+        }
+        return healing;
+    }
+
+    public void fullLife() {
+        if (heal() && healCycle >= frequence) {
+            for (Entity entity : m_gp.getM_listEntity()) {
+                if (entity instanceof Fridge && isCollisionWithEnt(entity)) {
+                    ((Fridge) entity).heal();
+                }
+            }
+            memoryCycle = 0;
+        }
+        memoryCycle++;
+    }
 
 	public void attack(Monster m) {
 		m.setLife_point(m.getLife_point() - attack);
