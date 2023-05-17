@@ -116,6 +116,24 @@ public class TileManager {
 			m_tile[17] = new Tile();
 			m_tile[17].m_image = ImagePath.getInstance().FLOWER2;
 			
+			m_tile[18] = new Tile();
+			m_tile[18].m_image = ImagePath.getInstance().COOK1;
+			m_tile[18].m_collision=true;
+			
+			m_tile[19] = new Tile();
+			m_tile[19].m_image = ImagePath.getInstance().COOK2;
+			m_tile[19].m_collision=true;
+			
+			m_tile[20] = new Tile();
+			m_tile[20].m_image = ImagePath.getInstance().COOK3;
+			m_tile[20].m_collision=true;
+			
+		
+			
+			m_tile[21] = new Tile();
+			m_tile[21].m_image = ImagePath.getInstance().TILE;
+		
+	
 	
 	}
 	
