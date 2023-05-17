@@ -128,10 +128,17 @@ public class TileManager {
 			m_tile[20].m_image = ImagePath.getInstance().COOK3;
 			m_tile[20].m_collision=true;
 			
-		
-			
 			m_tile[21] = new Tile();
 			m_tile[21].m_image = ImagePath.getInstance().TILE;
+			
+			m_tile[22] = new Tile();
+			m_tile[22].m_image = ImagePath.getInstance().TOPFRIGO;
+			m_tile[22] .m_collision=true;
+			
+			
+			m_tile[23] = new Tile();
+			m_tile[23].m_image = ImagePath.getInstance().BOTFRIGO;
+			m_tile[23] .m_collision=true;
 		
 	
 	

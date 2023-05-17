@@ -16,6 +16,7 @@ public class ImagePath {
 	public BufferedImage BED2;
 	public BufferedImage BED3;
 	public BufferedImage BED4;
+	public BufferedImage BOTFRIGO;
 	public BufferedImage BLACK;
 	public BufferedImage BUTLER;
 	public BufferedImage CARPET;
@@ -41,6 +42,7 @@ public class ImagePath {
 	public BufferedImage STAIRS;
 	public BufferedImage SWORD;
 	public BufferedImage TRANSPARENT;
+	public BufferedImage TOPFRIGO;
 	public BufferedImage TILE;
 	public BufferedImage WALL;
 	public BufferedImage WALLPAPER;
@@ -57,6 +59,7 @@ public class ImagePath {
 			BED2 = ImageIO.read(getClass().getResource("/tiles/BED2.png"));
 			BED3 = ImageIO.read(getClass().getResource("/tiles/BED3.png"));
 			BED4 = ImageIO.read(getClass().getResource("/tiles/BED4.png"));
+			BOTFRIGO = ImageIO.read(getClass().getResource("/tiles/botFrigo.png"));
 			BLACK = ImageIO.read(getClass().getResource("/tiles/BLACK.jpg"));
 			BUTLER = ImageIO.read(getClass().getResource("/tiles/SKELETON.png"));
 			CARPET = ImageIO.read(getClass().getResource("/tiles/CARPET.png"));
@@ -82,6 +85,7 @@ public class ImagePath {
 			STAIRS = ImageIO.read(getClass().getResource("/tiles/STAIRS.png"));
 			SWORD = ImageIO.read(getClass().getResource("/tiles/SWORD.png"));
 			TILE = ImageIO.read(getClass().getResource("/tiles/TILE.png"));
+			TOPFRIGO= ImageIO.read(getClass().getResource("/tiles/TopFrigo.png"));
 			TRANSPARENT = ImageIO.read(getClass().getResource("/tiles/TRANSPARENT.png"));
 			WOODENFLOOR = ImageIO.read(getClass().getResource("/tiles/woodenfloor.png"));
 			WALL = ImageIO.read(getClass().getResource("/tiles/STONEWALL.png"));
