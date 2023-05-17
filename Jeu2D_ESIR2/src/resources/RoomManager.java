@@ -3,6 +3,7 @@ package resources;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import entity.Bat;
 import entity.Butler;
 import entity.Door;
 import entity.Entity;
@@ -78,8 +79,10 @@ public class RoomManager {
 		
 		//Room1
 		Room_1.push_entity(new Door(192, 528, a_gp, RoomCouloir, 144, 384));
+		Room_1.push_entity(new Butler(250,250,a_gp));
 		
 		Room_2.push_entity(new Door(336, 528, a_gp, RoomCouloir, 336, 384));
+		Room_2.push_entity(new Bat(264, 255,a_gp));
 		
 		Room_3.push_entity(new Door(480, 528, a_gp, RoomCouloir, 528, 384));
 		

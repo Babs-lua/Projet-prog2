@@ -17,7 +17,7 @@ public class Bat extends Monster {
 	private HashMap<Parameters, Double> attackParameters;
 
 	public Bat(int x, int y, GamePanel a_gp) {
-		super(50, 50, 3, ImagePath.getInstance().BAT, a_gp, 3, 1, 30);
+		super(x, y, 3, ImagePath.getInstance().BAT, a_gp, 3, 1, 30);
 		b_gameCycle = 0;
 		attackParameters = new HashMap<>();
 	}
