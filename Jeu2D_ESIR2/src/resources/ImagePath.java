@@ -28,6 +28,7 @@ public class ImagePath {
 	public BufferedImage HEART_EMPTY;
 	public BufferedImage HEART_HALF;
 	public BufferedImage HEART_FULL;
+	public BufferedImage HP_UP;
 	public BufferedImage KEY;
 	public BufferedImage LOG;
 	public BufferedImage MAINDOOR;
@@ -63,6 +64,7 @@ public class ImagePath {
 			HEART_EMPTY = ImageIO.read(getClass().getResource("/tiles/HEART_EMPTY.png"));
 			HEART_FULL = ImageIO.read(getClass().getResource("/tiles/HEART_FULL.png"));
 			HEART_HALF = ImageIO.read(getClass().getResource("/tiles/HEART_HALF.png"));
+			HP_UP = ImageIO.read(getClass().getResource("/tiles/hp_up.png"));
 			KEY = ImageIO.read(getClass().getResource("/tiles/KEY.png"));
 			LOG = ImageIO.read(getClass().getResource("/tiles/LOG.jpg"));
 			MAINDOOR = ImageIO.read(getClass().getResource("/tiles/castledoors.png"));

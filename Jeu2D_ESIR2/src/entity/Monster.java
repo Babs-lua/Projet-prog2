@@ -43,10 +43,8 @@ public abstract class Monster extends Entity {
 	        possibleObjects.add(new Heart(m_x,m_y,m_gp));
 
 	        Random random = new Random();
-	        for (int i = 0; i < 1; i++) {
 	            int randomIndex = random.nextInt(possibleObjects.size());
 	            randomObjects.add(possibleObjects.get(randomIndex));
-	        }
 
 	        return randomObjects;
 	    }
