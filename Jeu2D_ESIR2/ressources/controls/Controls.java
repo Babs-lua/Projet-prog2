@@ -16,5 +16,7 @@ public class Controls
 	public static int Left = Keybinding.keycodeOf(SpecialKeys.LEFT);
 	
 	public static int ShowStage = Keybinding.keycodeOf('a');
+	public static int heal = Keybinding.keycodeOf('h');
+
 	
 }

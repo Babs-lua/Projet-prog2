@@ -14,6 +14,10 @@ public class Key extends Objet {
 		super(x,y,ImagePath.getInstance().KEY,a_gp);
 		
 	}
+	
+	public Key(GamePanel a_gp) {
+		super(-8,-8,ImagePath.getInstance().KEY,a_gp);
+	}
 
 	@Override
 	public void update() {

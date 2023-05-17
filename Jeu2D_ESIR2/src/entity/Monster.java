@@ -1,9 +1,15 @@
 package entity;
 
+import java.util.Random;
+
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.pickableObjects.Chest;
+import entity.pickableObjects.Heart;
+import entity.pickableObjects.Key;
+import entity.weapon.Sword;
 import main.GamePanel;
 
 public abstract class Monster extends Entity {
@@ -17,12 +23,33 @@ public abstract class Monster extends Entity {
 	public Monster(int a_x, int a_y, int a_speed, BufferedImage a_idleImage, GamePanel a_gp, int life_point,
 			int damages, int frequence) {
 		super(a_x, a_y, a_speed, a_idleImage, a_gp);
-		inventaire = new ArrayList<Objet>();
+        inventaire = generateRandomObjects(); // Appel à une méthode pour générer des objets aléatoires
 		this.life_point = life_point;
 		this.setDamages(damages);
 		this.frequence = frequence;
 
 	}
+	
+	 private List<Objet> generateRandomObjects() {
+	        List<Objet> randomObjects = new ArrayList<>();
+
+	        // Ajouter ici la logique pour générer des objets aléatoires dans randomObjects
+	        // Vous pouvez utiliser une boucle ou une logique personnalisée en fonction de vos besoins
+
+	        // Exemple : Générer 3 objets aléatoires à partir d'une liste prédéfinie
+	        List<Objet> possibleObjects = new ArrayList<>();
+	        possibleObjects.add(new Sword(m_x,m_y,m_gp));
+	        possibleObjects.add(new Key(m_x,m_y,m_gp));
+	        possibleObjects.add(new Heart(m_x,m_y,m_gp));
+
+	        Random random = new Random();
+	        for (int i = 0; i < 1; i++) {
+	            int randomIndex = random.nextInt(possibleObjects.size());
+	            randomObjects.add(possibleObjects.get(randomIndex));
+	        }
+
+	        return randomObjects;
+	    }
 
 	public abstract void move();
 

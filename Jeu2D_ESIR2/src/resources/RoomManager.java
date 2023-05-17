@@ -52,6 +52,8 @@ public class RoomManager {
 		
 		RoomEntryMansion.push_entity(new Door(384, 0, a_gp, RoomMain, 336, 470));
 		
+		RoomEntryMansion.push_entity(new Butler(364, 255, a_gp));
+		
 		
 		
 		//Haul
